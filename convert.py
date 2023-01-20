@@ -9,12 +9,11 @@ import json
 # print(type(jsonToString))
 
 json_object = people(sex='F', age=30, uf_code='AC')
-values = [list(x.values() for x in json_object)]
+values = [list(x.values()) for x in json_object]
 #print(values)
 
 # Cria uma lista com os nomes das colunas
 nome_das_colunas = [
-    'id',
     'profissional_nome', 
     'profissional_cpf',
     'profissional_rg',
@@ -31,7 +30,7 @@ for i, record in enumerate(values):
     # Acrescenta cada valor para a lista de values_list
     for v, val in enumerate(record):
         if type(val) == str:
-            val = "'{}'".format(val, replace("'", "''"))
+            val = "'{}'".format(val.replace("'", "''"))
         values_list += [str(val)]
 
     # Acrescenta os parentes por causa do SQL
